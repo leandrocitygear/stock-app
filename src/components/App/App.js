@@ -8,16 +8,17 @@ import Register from '../Register/Register';
 import SymbolSearch from '../SymbolSearch/SymbolSearch';
 import Trades from '../Trades/Trades';
 import WatchList from '../WatchList/WatchList';
+import Exchanges from '../Exchanges/Exchanges';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
-        
+        <h1 className='logo'>Porfolio Pro</h1>
+        <Exchanges />
       </header>
-      <main>
+      <main className='App-main'>
 
       </main>
     </div>

@@ -1,6 +1,3 @@
-const Api = 'co5ralhr01qv77g7nhd0co5ralhr01qv77g7nhdg';
-
-const secret = "X-Finnhub-Secret-co5ralhr01qv77g7nheg"
 
 // trades https://finnhub.io/docs/api/websocket-trades
 // https://finnhub.io/docs/api/symbol-search
