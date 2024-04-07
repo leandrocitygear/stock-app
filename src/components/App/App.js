@@ -17,6 +17,7 @@ function App() {
       <header className="App-header">
         <h1 className='logo'>Porfolio Pro</h1>
         <Exchanges />
+        <MarketStatus/>
       </header>
       <main className='App-main'>
 

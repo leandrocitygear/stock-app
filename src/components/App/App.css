@@ -28,8 +28,9 @@
 
 .App-header {
   background-color: #262626;
-  height: 35px;
+  height: 40px;
   /* border: solid red; */
+  display: inline-flex;
 }
 
 .logo {
