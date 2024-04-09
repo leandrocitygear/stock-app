@@ -3,10 +3,20 @@
     /* border: solid blue; */
     width: 220px;
     display: inline-flex;
-    padding-top: 5px;
+    padding-top: 7px;
     
 }
 
 p {
     color: white;
+}
+
+.open {
+    color: lawngreen;
+    font-size: 15px;
+}
+
+.closed {
+    color: red;
+    font-size: 15px;
 }

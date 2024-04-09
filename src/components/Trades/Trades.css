@@ -1,0 +1,44 @@
+.Tradesbox {
+    border: ridge #262626;
+    width: 450px;
+    height: 350px;
+    background-color:#262626;
+}
+
+.InfoBar {
+ /* border: solid blue; */
+ height: 30px;
+ background-color: #2C3540;
+ padding-left: 10px;
+}
+
+.QuotePanel {
+    /* border: solid red; */
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    line-height: 27px;
+    justify-content: center;
+    font-size: small;
+    background-color: rgb(63, 63, 63);
+    padding-left: 10px;
+}
+
+.CompProfile {
+    /* border: solid blue; */
+    height:215px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    line-height: 27px;
+    justify-content: center;
+    font-size: small;
+    background-color: rgb(94, 93, 93);
+    padding-left: 10px;
+}
+
+img {
+    height: 50px;
+    width: 50px;
+}

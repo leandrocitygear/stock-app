@@ -9,12 +9,11 @@ const Stock4 = () => {
   const [stockBar, setStockBar] = useState([])
 
   useEffect(() => {
-    const indexBarSymbol = `${base}/quote?symbol=amzn&token=${process.env.REACT_APP_API_KEY}`;
+    const indexBarSymbol = `${base}/quote?symbol=AMZN&token=${process.env.REACT_APP_API_KEY}`;
 
     fetch(indexBarSymbol)
     .then(response => response.json())
     .then(json => {
-      console.log(json);
     setStockBar([json]);
     }).catch(error => {
       console.error("Error fetching search results:", error);
@@ -26,7 +25,9 @@ const Stock4 = () => {
   return (
     <div>
       {stockBar.map((stock4, index) => (
-      <p key={index} className='sym'>$AMZN <span>{stock4.c}<br/>{stock4.d}({stock4.dp}%)</span></p>
+      <p key={index} className='sym'>$AMZN <span className='price'>{stock4.c}</span><br /><span className={stock4.d > 0 ? 'positive' : 'negative'}>
+      {stock4.d > 0 ? '+' : '-'}{Math.abs(stock4.d)} ({stock4.dp > 0 ? '+' : '-'}{Math.abs(stock4.dp)}%)
+    </span></p>
       ))}
     </div>
   )

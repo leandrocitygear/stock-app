@@ -13,19 +13,17 @@ const MarketStatus = () => {
     fetch(marketstad)
     .then(response => response.json())
     .then(json => {
-      console.log(json);
     setMarketStatus(json);
     }).catch(error => {
       console.error("Error fetching search results:", error);
     });
-
   }, [])
 
 
   return (
     <div className='Market'>
       {marketStatus !== null && (
-        <p>Market {marketStatus.isOpen ? "Open" : "Closed"}{marketStatus.session}</p>
+        <p>Market : {marketStatus.isOpen ? <span className='open'>Open</span> : <span className='closed'>Closed</span>} {marketStatus.session}</p>
       )}
 
     

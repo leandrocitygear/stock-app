@@ -1,5 +1,8 @@
 div {
-    margin: 0;
+    /* margin-right: 40px; */
+    /* text-align: center; */
+    
+
 }
 
 
@@ -13,7 +16,19 @@ div {
 }
 
 span {
-    color: lawngreen;
     width: 85px;
     font-size: 12px;
+}
+
+.price {
+    color: lawngreen;
+}
+
+
+.positive {
+    color: lawngreen; /* Change text color to green for positive values */
+}
+  
+.negative {
+    color: red; /* Change text color to red for negative values */
 }

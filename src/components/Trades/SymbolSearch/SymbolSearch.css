@@ -1,0 +1,46 @@
+.SearchBar {
+    width: 200px;
+    /* border: solid green; */
+    height: 30px;
+    position: relative;
+}
+
+.Search {
+    /* border: solid red; */
+   
+}
+
+input {
+    /* height: 20px; */
+}
+
+.Dropdown {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    z-index: 1;
+    width: 100%; /* Match the width of SearchBar */
+    max-height: 200px; /* Limit the maximum height of dropdown */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    /* border: 1px solid black; Border for dropdown */
+    background-color: #262626; /* Background color for dropdown */
+    border-radius: 4px; /* Rounded corners for dropdown */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for dropdown */
+  }
+  
+  .Dropdown ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .Dropdown ul li {
+    padding: 8px 16px; /* Padding for each dropdown item */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    color: white;
+  }
+  
+  .Dropdown ul li:hover {
+    background-color: darkslateblue; /* Change background color on hover */
+  }
+

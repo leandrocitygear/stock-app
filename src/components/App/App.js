@@ -5,7 +5,6 @@ import Login from '../Login/Login';
 import MarketStatus from '../MarketStatus/MarketStatus';
 import News from '../News/News';
 import Register from '../Register/Register';
-import SymbolSearch from '../SymbolSearch/SymbolSearch';
 import Trades from '../Trades/Trades';
 import WatchList from '../WatchList/WatchList';
 import Exchanges from '../Exchanges/Exchanges';
@@ -20,6 +19,7 @@ function App() {
         <MarketStatus/>
       </header>
       <main className='App-main'>
+        <Trades/>
 
       </main>
     </div>
