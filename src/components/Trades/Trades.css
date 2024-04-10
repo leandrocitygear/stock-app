@@ -1,7 +1,7 @@
 .Tradesbox {
     border: ridge #262626;
     width: 450px;
-    height: 55%;
+    height: 100%;
     background-color:#262626;
 }
 
@@ -41,4 +41,11 @@
 img {
     height: 50px;
     width: 50px;
+}
+
+.CompNews {
+    /* border: solid red; */
+    height: 248px;
+    overflow-y: scroll;
+    padding-left: 10px;
 }

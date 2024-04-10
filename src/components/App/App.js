@@ -18,9 +18,10 @@ function App() {
         <Exchanges />
         <MarketStatus/>
       </header>
-  
+      <main className='App-main'>
         <Trades/>
         <News />
+      </main>
     </div>
   );
 }

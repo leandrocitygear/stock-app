@@ -9,6 +9,7 @@ const Trades = () => {
 
   const [quote, setQuote] = useState([])
   const [profile, setProfile] = useState([])
+  const [compNews, setCompNews] = useState([])
 
   const [selectedSymbol, setSelectedSymbol] = useState('');
 
@@ -23,7 +24,6 @@ const Trades = () => {
       fetch(addQuote)
         .then(response => response.json())
         .then(json => {
-          console.log(json)
           setQuote(json);
         })
         .catch(error => {
@@ -39,8 +39,23 @@ const Trades = () => {
       fetch(addCompPro)
         .then(response => response.json())
         .then(json => {
-          console.log(json)
           setProfile(json);
+        })
+        .catch(error => {
+          console.error("Error fetching quote:", error);
+        });
+    }
+  }, [selectedSymbol]);
+
+  useEffect(() => {
+    if (selectedSymbol) {
+      const addCompNews = `${base}/company-news?symbol=${selectedSymbol}&from=2024-04-01&to=2030-01-01&token=${process.env.REACT_APP_API_KEY}`;
+  
+      fetch(addCompNews)
+        .then(response => response.json())
+        .then(json => {
+          console.log(json)
+          setCompNews(json);
         })
         .catch(error => {
           console.error("Error fetching quote:", error);
@@ -74,10 +89,18 @@ const Trades = () => {
         <p>Listed exchange: {profile.exchange}</p>
         <p>Market Cap: {profile.marketCapitalization}</p>
         <p>Name: {profile.name}</p>
-        <p>Oustanding Shares: {profile.shareOutstanding
-}</p>
-        
+        <p>Oustanding Shares: {profile.shareOutstanding}</p>
+      </section>
 
+      <section className='CompNews'>
+        {compNews.map((list, index) => (
+          <div key={index}>
+        <p>{list.category}</p>
+        <p>{list.headline}</p>
+        <p>{list.summary}</p>
+        </div>
+        ))}
+        
       </section>
     
     </div>

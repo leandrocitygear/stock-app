@@ -13,8 +13,12 @@ const News = () => {
     fetch(newsApi)
     .then(response => response.json())
     .then(json => {
-      console.log(json)
-    setNewsList(json);
+      const newsWithFormattedDate = json.map(news => ({
+          ...news,
+          datetime: new Date(news.datetime * 1000).toLocaleString()
+        }));
+        setNewsList(newsWithFormattedDate);
+
     }).catch(error => {
       console.error("Error fetching search results:", error);
     });
@@ -24,7 +28,16 @@ const News = () => {
   return (
     <div className='NewsBox'>
       {newsList.map((list, index) => (
-        <p key={index}>lis  {list.category}</p>
+        <div key={index}>
+        <p>{list.category}</p>
+        <p>{list.datetime}</p>
+        <p>{list.headline}</p>
+        <img className='newsimg' src={list.image}/>
+        <p>{list.related}</p>
+        <p>{list.source}</p>
+        <p>{list.summary}</p>
+        <p>{list.url}</p>
+        </div>
       ))}
 
     </div>
