@@ -1,0 +1,11 @@
+.NewsBox {
+    border: ridge #262626;
+    width: 850px;
+    height: 38.7%;
+    background-color:#262626;
+    overflow: scroll;
+}
+
+p {
+    color: white;
+}

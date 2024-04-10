@@ -18,10 +18,9 @@ function App() {
         <Exchanges />
         <MarketStatus/>
       </header>
-      <main className='App-main'>
+  
         <Trades/>
-
-      </main>
+        <News />
     </div>
   );
 }

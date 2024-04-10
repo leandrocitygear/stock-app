@@ -34,11 +34,14 @@ html, body, #root {
   background-image: url(./liberatto-RUYCsWDSJFo-unsplash\ \(1\).jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  /* overflow: hidden; */
+  box-sizing: border-box;
 }
 
 .App-header {
   background-color: #262626;
-  height: 40px;
+  /* height: 40px; */
+  height: 6.3%;
   /* border: solid red; */
   display: inline-flex;
   width: 100%;
