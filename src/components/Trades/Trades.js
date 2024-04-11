@@ -54,8 +54,11 @@ const Trades = () => {
       fetch(addCompNews)
         .then(response => response.json())
         .then(json => {
-          console.log(json)
-          setCompNews(json);
+          const newsWithFormattedDate = json.map(news => ({
+            ...news,
+            datetime: new Date(news.datetime * 1000).toLocaleString()
+          }));
+          setCompNews(newsWithFormattedDate);
         })
         .catch(error => {
           console.error("Error fetching quote:", error);
@@ -72,35 +75,36 @@ const Trades = () => {
 
       </header>
       <section className='QuotePanel'>
-      {/* <p>Quote for {selectedSymbol}</p> */}
-        <p>Last price: {quote.c}</p>
-        <p>Change: {quote.d}</p>
-        <p>Percent change: {quote.dp}</p>
-        <p>High: {quote.h}</p>
-        <p>Low: {quote.l}</p>
-        <p>Open: {quote.o}</p>
-        <p>Prev Close: {quote.pc}</p>
+        <p className='tradeInfo'>Last Price: <span className='blueText'>{quote.c}</span></p>
+        <p className='tradeInfo'>Change: <span className='blueText'>{quote.d}</span></p>
+        <p className='tradeInfo'>Percent Change: <span className='blueText'>{quote.dp}</span></p>
+        <p className='tradeInfo'>High: <span className='blueText'>{quote.h}</span></p>
+        <p className='tradeInfo'>Low: <span className='blueText'>{quote.l}</span></p>
+        <p className='tradeInfo'>Open: <span className='blueText'>{quote.o}</span></p>
+        <p className='tradeInfo'>Prev Close: <span className='blueText'>{quote.pc}</span></p>
 
       </section>
       <section className='CompProfile'>
         <img src={profile.logo}/>
-        <p>Country: {profile.country}</p>
-        <p>Currency: {profile.currency}</p>
-        <p>Listed exchange: {profile.exchange}</p>
-        <p>Market Cap: {profile.marketCapitalization}</p>
-        <p>Name: {profile.name}</p>
-        <p>Oustanding Shares: {profile.shareOutstanding}</p>
+        <p className='tradeInfo'>Country: {profile.country}</p>
+        <p className='tradeInfo'>Currency: {profile.currency}</p>
+        <p className='tradeInfo'>Listed exchange: {profile.exchange}</p>
+        <p className='tradeInfo'>Market Cap: <span className='blueText'>{profile.marketCapitalization}</span></p>
+        <p className='tradeInfo'>Name: {profile.name}</p>
+        <p className='tradeInfo'>Oustanding Shares: <span className='blueText'>{profile.shareOutstanding}</span></p>
       </section>
-
+      
       <section className='CompNews'>
+        <h4>Company News</h4>
         {compNews.map((list, index) => (
-          <div key={index}>
-        <p>{list.category}</p>
-        <p>{list.headline}</p>
-        <p>{list.summary}</p>
+          <div className='articleC' key={index}>
+        <p>{list.datetime}</p><br/>
+        <p>{list.headline}</p><br/>
+        <p>{list.summary}</p><br/>
+        {list.image && <img className='newsimg' src={list.image} alt="News Image" />}
+        <p>Source: {list.source}</p>
         </div>
         ))}
-        
       </section>
     
     </div>

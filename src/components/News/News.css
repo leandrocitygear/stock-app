@@ -5,6 +5,7 @@
     background-color:#262626;
     overflow-y: scroll;
     padding-left: 10px;
+    padding-right: 10px;
 
 }
 
@@ -13,6 +14,12 @@ p {
 }
 
 .newsimg {
-    width: 250px;
-    height: 150px;
+    width: 400px;
+    height: 250px;
+}
+
+.article {
+    border-bottom: solid 1px palegreen;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
 }

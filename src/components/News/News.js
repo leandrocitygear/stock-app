@@ -28,14 +28,14 @@ const News = () => {
   return (
     <div className='NewsBox'>
       {newsList.map((list, index) => (
-        <div key={index}>
-        <p>{list.category}</p>
-        <p>{list.datetime}</p>
-        <p>{list.headline}</p>
-        <img className='newsimg' src={list.image}/>
+        <div className='article' key={index}>
+        <p>Category: {list.category}</p>
+        <p>{list.datetime}</p><br/>
+        <p>{list.headline}</p><br/>
+        <p>{list.summary}</p><br/>
+        {list.image && <img className='newsimg' src={list.image} alt="News Image" />}
         <p>{list.related}</p>
-        <p>{list.source}</p>
-        <p>{list.summary}</p>
+        <p>Source: {list.source}</p>
         <p>{list.url}</p>
         </div>
       ))}

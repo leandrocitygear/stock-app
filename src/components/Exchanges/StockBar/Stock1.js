@@ -9,17 +9,28 @@ const Stock1 = () => {
   const [stockBar, setStockBar] = useState([])
 
   useEffect(() => {
-    const indexBarSymbol = `${base}/quote?symbol=AAPL&token=${process.env.REACT_APP_API_KEY}`;
+    const fetchStockData = async () => {
+      try {
+        const indexBarSymbol = `${base}/quote?symbol=AAPL&token=${process.env.REACT_APP_API_KEY}`;
+        const response = await fetch(indexBarSymbol);
+        if (!response.ok) {
+          throw new Error(`Error fetching stock data: ${response.statusText}`);
+        }
+        const jsonData = await response.json();
+        setStockBar(jsonData);
+      } catch (error) {
+        console.error("Error fetching stock data:", error);
+      }
+    };
 
-    fetch(indexBarSymbol)
-    .then(response => response.json())
-    .then(json => {
-    setStockBar(json);
-    }).catch(error => {
-      console.error("Error fetching search results:", error);
-    });
+    fetchStockData();
 
-  }, [])
+    // Set interval to fetch data every 30 seconds
+    const intervalId = setInterval(fetchStockData, 10000);
+
+    // Cleanup function to clear interval when component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
 
 
   return (

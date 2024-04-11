@@ -9,26 +9,36 @@ const Stock4 = () => {
   const [stockBar, setStockBar] = useState([])
 
   useEffect(() => {
-    const indexBarSymbol = `${base}/quote?symbol=AMZN&token=${process.env.REACT_APP_API_KEY}`;
+    const fetchStockData = async () => {
+      try {
+        const indexBarSymbol = `${base}/quote?symbol=AMZN&token=${process.env.REACT_APP_API_KEY}`;
+        const response = await fetch(indexBarSymbol);
+        if (!response.ok) {
+          throw new Error(`Error fetching stock data: ${response.statusText}`);
+        }
+        const jsonData = await response.json();
+        setStockBar(jsonData);
+      } catch (error) {
+        console.error("Error fetching stock data:", error);
+      }
+    };
 
-    fetch(indexBarSymbol)
-    .then(response => response.json())
-    .then(json => {
-    setStockBar([json]);
-    }).catch(error => {
-      console.error("Error fetching search results:", error);
-    });
+    fetchStockData();
 
-  }, [])
+    // Set interval to fetch data every 30 seconds
+    const intervalId = setInterval(fetchStockData, 10000);
+
+    // Cleanup function to clear interval when component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
+
 
 
   return (
     <div>
-      {stockBar.map((stock4, index) => (
-      <p key={index} className='sym'>$AMZN <span className='price'>{stock4.c}</span><br /><span className={stock4.d > 0 ? 'positive' : 'negative'}>
-      {stock4.d > 0 ? '+' : '-'}{Math.abs(stock4.d)} ({stock4.dp > 0 ? '+' : '-'}{Math.abs(stock4.dp)}%)
+      <p className='sym'>$AMZN <span className='price'>{stockBar.c}</span><br /><span className={stockBar.d > 0 ? 'positive' : 'negative'}>
+      {stockBar.d > 0 ? '+' : '-'}{Math.abs(stockBar.d)} ({stockBar.dp > 0 ? '+' : '-'}{Math.abs(stockBar.dp)}%)
     </span></p>
-      ))}
     </div>
   )
 }
