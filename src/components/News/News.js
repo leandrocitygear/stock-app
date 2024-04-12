@@ -27,6 +27,9 @@ const News = () => {
 
   return (
     <div className='NewsBox'>
+      <header className='MNews'>
+        <h3 className='newsT'>Market News</h3>
+      </header>
       {newsList.map((list, index) => (
         <div className='article' key={index}>
         <p>Category: {list.category}</p>

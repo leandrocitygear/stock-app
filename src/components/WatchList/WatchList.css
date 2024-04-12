@@ -1,0 +1,41 @@
+.wlpanel {
+    border: ridge #262626;
+    width: 33.7%;
+    height: 100%;
+    background-color:#262626;
+    overflow-y: scroll;
+}
+
+.title {
+    height: 30px;
+    width: 100%;
+ background-color: #2C3540;
+ padding-left: 10px;
+ display: inline-flex;
+ justify-content: space-evenly;
+}
+
+.name {
+    color: white;
+}
+
+table {
+    background-color: black;
+    width: 100%;
+}
+
+th {
+    background-color: #2C3540;
+    color: white;
+    font-size: 13px;
+}
+
+tr {
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-size: 13px;
+}
+
+tr:nth-of-type(even) {
+    background-color: gray;
+}

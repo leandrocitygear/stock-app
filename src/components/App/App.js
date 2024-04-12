@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Chart from '../Chart/Chart';
 import Login from '../Login/Login';
 import MarketStatus from '../MarketStatus/MarketStatus';
 import News from '../News/News';
@@ -21,6 +20,7 @@ function App() {
       <main className='App-main'>
         <Trades/>
         <News />
+        <WatchList/>
       </main>
     </div>
   );

@@ -72,7 +72,6 @@ const Trades = () => {
     <div className='Tradesbox'>
       <header className='InfoBar'>
         <SymbolSearch onSymbolSelect={handleSymbolSelect}/>
-
       </header>
       <section className='QuotePanel'>
         <p className='tradeInfo'>Last Price: <span className='blueText'>{quote.c}</span></p>
@@ -85,7 +84,7 @@ const Trades = () => {
 
       </section>
       <section className='CompProfile'>
-        <img src={profile.logo}/>
+        {profile.logo && <img className='propic' src={profile.logo} alt="Company Logo" />}
         <p className='tradeInfo'>Country: {profile.country}</p>
         <p className='tradeInfo'>Currency: {profile.currency}</p>
         <p className='tradeInfo'>Listed exchange: {profile.exchange}</p>

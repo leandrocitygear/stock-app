@@ -4,9 +4,17 @@
     height: 100%;
     background-color:#262626;
     overflow-y: scroll;
-    padding-left: 10px;
-    padding-right: 10px;
+}
 
+.MNews{
+    height: 30px;
+    background-color: #2C3540;
+    padding-left: 10px;
+    z-index: 2;
+}
+
+.newsT {
+    color: white;
 }
 
 p {
@@ -22,4 +30,6 @@ p {
     border-bottom: solid 1px palegreen;
     margin-bottom: 10px;
     padding-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
