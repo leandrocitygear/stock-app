@@ -1,91 +1,92 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './WatchList.css';
+import SymbolSearch from '../Trades/SymbolSearch/SymbolSearch';
+
+const base = 'https://finnhub.io/api/v1';
 
 const WatchList = () => {
   const [symbols, setSymbols] = useState([]);
-  const [newSymbol, setNewSymbol] = useState('');
   const [selectedSymbols, setSelectedSymbols] = useState([]);
+  const [debouncedSymbol, setDebouncedSymbol] = useState('');
 
-  const handleAddSymbol = (e) => {
-    e.preventDefault();
-    if (newSymbol.trim() !== '') {
-      setSymbols([...symbols, newSymbol]);
-      setNewSymbol('');
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedSymbol(selectedSymbols);
+    }, 500); // Adjust debounce delay as needed (e.g., 500ms)
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [selectedSymbols]);
+
+  useEffect(() => {
+    if (debouncedSymbol.length > 0) { // Check if debouncedSymbol is not empty
+      const addQuote = `${base}/quote?symbol=${debouncedSymbol}&token=${process.env.REACT_APP_API_KEY}`;
+  
+      fetch(addQuote)
+        .then(response => response.json())
+        .then(json => {
+          console.log("Quote for", debouncedSymbol, ":", json); // Log quote data
+          setSymbols(prevSymbols => [...prevSymbols, { symbol: debouncedSymbol, quote: json }]);
+        })
+        .catch(error => {
+          console.error("Error fetching quote:", error);
+        });
     }
+  }, [debouncedSymbol]);
+
+  const handleSymbolSelect = (symbol) => {
+    setSelectedSymbols(symbol);
   };
 
-  const handleRemoveSelectedSymbols = () => {
-    const updatedSymbols = symbols.filter(symbol => !selectedSymbols.includes(symbol));
+  const handleRemoveSymbol = (symbolToRemove) => {
+    const updatedSymbols = symbols.filter(symbol => symbol.symbol !== symbolToRemove);
     setSymbols(updatedSymbols);
-    setSelectedSymbols([]);
-  };
-
-  const handleToggleSelectSymbol = (symbol) => {
-    if (selectedSymbols.includes(symbol)) {
-      setSelectedSymbols(selectedSymbols.filter(selectedSymbol => selectedSymbol !== symbol));
-    } else {
-      setSelectedSymbols([...selectedSymbols, symbol]);
-    }
   };
 
   return (
     <div className='wlpanel'>
       <header className='title'>
         <h3 className='name'>Watch List</h3>
-
-        <form onSubmit={handleAddSymbol}>
-        <input
-          type="text"
-          value={newSymbol}
-          onChange={(e) => setNewSymbol(e.target.value)}
-          placeholder="Enter symbol"
-        />
-        <button type='submit'>Add</button>
-        </form>
-
-        {selectedSymbols.length > 0 && (
-          <button onClick={handleRemoveSelectedSymbols}>Remove Selected</button>
-        )}
+        <SymbolSearch onSymbolSelect={handleSymbolSelect} />
       </header>
       <main>
-        
         {symbols.length > 0 && (
           <table>
             <thead>
               <tr>
-                <th></th>
-                <th>#</th>
-                <th>Symbol</th>
-                <th>Last Price</th>
-                <th>Change</th>
-                <th>% Change</th>
-                <th>High</th>
-                <th>Low</th>
+                <th style={{ textAlign: 'center' }}>#</th>
+                <th style={{ textAlign: 'left' }}>Symbol</th>
+                <th style={{ textAlign: 'right' }}>Last Price</th>
+                {/* Add other columns for quote data as needed */}
+                <th style={{ textAlign: 'right' }}>Change</th>
+                <th style={{ textAlign: 'right' }}>% Change</th>
+                <th style={{ textAlign: 'right' }}>High</th>
+                <th style={{ textAlign: 'right' }}>Low</th>
+                <th style={{ textAlign: 'center' }}>Remove</th>
               </tr>
             </thead>
             <tbody>
               {symbols.map((symbol, index) => (
                 <tr key={index}>
-                  <td>
-                    <input
-                      type="checkbox"
-                      checked={selectedSymbols.includes(symbol)}
-                      onChange={() => handleToggleSelectSymbol(symbol)}
-                    />
-                  </td>
                   <td>{index + 1}</td>
-                  <td>{symbol}</td>
-                  <td>{/* Last price value */}</td>
-                  <td>{/* Change value */}</td>
-                  <td>{/* Percent change value */}</td>
-                  <td>{/* High value */}</td>
-                  <td>{/* Low value */}</td>
+                  <td>{symbol.symbol}</td>
+                  <td>{symbol.quote.c }</td>
+                  <td>{symbol.quote.d }</td>
+                  <td>{symbol.quote.dp}</td>
+                  <td>{symbol.quote.h}</td>
+                  <td>{symbol.quote.l}</td>
+                  <td>
+                    <button onClick={() => handleRemoveSymbol(symbol.symbol)}>Remove</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         )}
-        
+        {symbols.length === 0 && (
+          <p>No symbols added yet</p>
+        )}
       </main>
     </div>
   )

@@ -12,11 +12,19 @@
  background-color: #2C3540;
  padding-left: 10px;
  display: inline-flex;
- justify-content: space-evenly;
 }
 
 .name {
     color: white;
+    margin-right: 30px;
+}
+
+.wlsearch {
+    margin-right: 30px;
+}
+
+.rembtn {
+    height: 25px;
 }
 
 table {
@@ -28,6 +36,8 @@ th {
     background-color: #2C3540;
     color: white;
     font-size: 13px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 tr {
@@ -36,6 +46,12 @@ tr {
     font-size: 13px;
 }
 
+
 tr:nth-of-type(even) {
     background-color: gray;
+}
+
+td {
+    padding-left: 2px;
+    padding-right: 2px;
 }
