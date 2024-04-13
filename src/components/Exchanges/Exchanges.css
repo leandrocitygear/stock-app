@@ -1,8 +1,5 @@
 .Exchanges {
-    /* position: absolute; */
     width: 950px;
-    /* margin-left: 20px; */
-    /* border: solid 1px red; */
     display: inline-flex;
     justify-content: space-evenly;
 }

@@ -7,10 +7,7 @@ import Stock4 from './StockBar/Stock4';
 import Stock5 from './StockBar/Stock5';
 import Stock6 from './StockBar/Stock6';
 
-
-
 const Exchanges = () => {
-
 
   return (
     <div className='Exchanges'>
@@ -20,7 +17,6 @@ const Exchanges = () => {
       <Stock4/>
       <Stock5/>
       <Stock6/>
-      
     </div>
   )
 }

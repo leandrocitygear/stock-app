@@ -11,14 +11,12 @@
 }
 
 .InfoBar {
- /* border: solid blue; */
  height: 30px;
  background-color: #2C3540;
  padding-left: 10px;
 }
 
 .QuotePanel {
-    /* border: solid red; */
     height: 100px;
     display: flex;
     flex-direction: column;
@@ -36,7 +34,6 @@
 }
 
 .CompProfile {
-    /* border: solid blue; */
     height:215px;
     display: flex;
     flex-direction: column;
@@ -54,8 +51,6 @@
 }
 
 .CompNews {
-    /* border: solid 1px red; */
-    /* height:max-content; */
     height: 51.2%;
     overflow-y: scroll;
     padding-left: 10px;
@@ -72,5 +67,4 @@ h4 {
     color: white;
     border-bottom: solid 1px #62CDFF;
     margin-bottom: 5px;
-
 }

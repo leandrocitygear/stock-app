@@ -65,8 +65,6 @@ const Trades = () => {
         });
     }
   }, [selectedSymbol]);
-  
-
 
   return (
     <div className='Tradesbox'>

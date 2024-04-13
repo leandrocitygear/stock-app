@@ -20,7 +20,7 @@ const SymbolSearch = ({onSymbolSelect}) => {
       if (Array.isArray(data.result)) {
         setSearchResults(data.result);
       } else {
-        setSearchResults([]); // Set to empty array if data.result is not an array
+        setSearchResults([]);
       }
     } catch (error) {
       console.error("Error fetching search results:", error.message);

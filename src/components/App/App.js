@@ -1,9 +1,7 @@
 import React from 'react';
 import './App.css';
-import Login from '../Login/Login';
 import MarketStatus from '../MarketStatus/MarketStatus';
 import News from '../News/News';
-import Register from '../Register/Register';
 import Trades from '../Trades/Trades';
 import WatchList from '../WatchList/WatchList';
 import Exchanges from '../Exchanges/Exchanges';

@@ -25,8 +25,6 @@ const MarketStatus = () => {
       {marketStatus !== null && (
         <p>Market : {marketStatus.isOpen ? <span className='open'>Open</span> : <span className='closed'>Closed</span>} {marketStatus.session}</p>
       )}
-
-    
     </div>
   )
 }

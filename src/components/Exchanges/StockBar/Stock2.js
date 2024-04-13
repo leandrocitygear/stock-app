@@ -25,10 +25,8 @@ const Stock2 = () => {
 
     fetchStockData();
 
-    // Set interval to fetch data every 30 seconds
     const intervalId = setInterval(fetchStockData, 10000);
 
-    // Cleanup function to clear interval when component unmounts
     return () => clearInterval(intervalId);
   }, []);
 

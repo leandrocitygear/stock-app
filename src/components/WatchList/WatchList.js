@@ -19,7 +19,7 @@ const WatchList = () => {
   useEffect(() => {
     const timerId = setTimeout(() => {
       setDebouncedSymbol(selectedSymbols);
-    }, 500); // Adjust debounce delay as needed (e.g., 500ms)
+    }, 500);
 
     return () => {
       clearTimeout(timerId);
@@ -27,13 +27,13 @@ const WatchList = () => {
   }, [selectedSymbols]);
 
   useEffect(() => {
-    if (debouncedSymbol.length > 0) { // Check if debouncedSymbol is not empty
+    if (debouncedSymbol.length > 0) {
       const addQuote = `${base}/quote?symbol=${debouncedSymbol}&token=${process.env.REACT_APP_API_KEY}`;
   
       fetch(addQuote)
         .then(response => response.json())
         .then(json => {
-          console.log("Quote for", debouncedSymbol, ":", json); // Log quote data
+          console.log("Quote for", debouncedSymbol, ":", json);
           setSymbols(prevSymbols => [...prevSymbols, { symbol: debouncedSymbol, quote: json }]);
         })
         .catch(error => {
@@ -65,7 +65,6 @@ const WatchList = () => {
                 <th style={{ textAlign: 'center' }}>#</th>
                 <th style={{ textAlign: 'left' }}>Symbol</th>
                 <th style={{ textAlign: 'right' }}>Last Price</th>
-                {/* Add other columns for quote data as needed */}
                 <th style={{ textAlign: 'right' }}>Change</th>
                 <th style={{ textAlign: 'right' }}>% Change</th>
                 <th style={{ textAlign: 'right' }}>High</th>

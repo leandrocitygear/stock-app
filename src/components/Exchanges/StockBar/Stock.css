@@ -1,18 +1,8 @@
-div {
-    /* margin-right: 40px; */
-    /* text-align: center; */
-    
-
-}
-
-
 .sym {
     color: white;
     padding: 0;
     width: 100px;
     font-size: 12px;
-    /* border: solid red; */
-
 }
 
 span {
@@ -24,11 +14,10 @@ span {
     color: lawngreen;
 }
 
-
 .positive {
-    color: lawngreen; /* Change text color to green for positive values */
+    color: lawngreen; 
 }
   
 .negative {
-    color: red; /* Change text color to red for negative values */
+    color: red; 
 }

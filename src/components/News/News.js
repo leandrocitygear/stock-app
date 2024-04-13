@@ -42,7 +42,6 @@ const News = () => {
         <p>{list.url}</p>
         </div>
       ))}
-
     </div>
   )
 }
