@@ -24,7 +24,12 @@
 }
 
 .rembtn {
-    height: 25px;
+    width: 15px;
+}
+
+.rembtn:hover {
+ background-color: red;
+color: white;
 }
 
 table {
@@ -48,7 +53,7 @@ tr {
 
 
 tr:nth-of-type(even) {
-    background-color: gray;
+    background-color: rgb(88, 87, 87);
 }
 
 td {

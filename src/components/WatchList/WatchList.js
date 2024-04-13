@@ -5,9 +5,16 @@ import SymbolSearch from '../Trades/SymbolSearch/SymbolSearch';
 const base = 'https://finnhub.io/api/v1';
 
 const WatchList = () => {
-  const [symbols, setSymbols] = useState([]);
+  const [symbols, setSymbols] = useState(() => {
+    const storedSymbols = localStorage.getItem('watchlist_symbols');
+    return storedSymbols ? JSON.parse(storedSymbols) : [];
+  });
   const [selectedSymbols, setSelectedSymbols] = useState([]);
   const [debouncedSymbol, setDebouncedSymbol] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('watchlist_symbols', JSON.stringify(symbols));
+  }, [symbols]);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -63,21 +70,21 @@ const WatchList = () => {
                 <th style={{ textAlign: 'right' }}>% Change</th>
                 <th style={{ textAlign: 'right' }}>High</th>
                 <th style={{ textAlign: 'right' }}>Low</th>
-                <th style={{ textAlign: 'center' }}>Remove</th>
+                <th style={{ textAlign: 'center' }}></th>
               </tr>
             </thead>
             <tbody>
               {symbols.map((symbol, index) => (
                 <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{symbol.symbol}</td>
-                  <td>{symbol.quote.c }</td>
-                  <td>{symbol.quote.d }</td>
-                  <td>{symbol.quote.dp}</td>
-                  <td>{symbol.quote.h}</td>
-                  <td>{symbol.quote.l}</td>
-                  <td>
-                    <button onClick={() => handleRemoveSymbol(symbol.symbol)}>Remove</button>
+                  <td style={{width: '27px', textAlign:'left',}}>{index + 1}</td>
+                  <td style={{width: '50px', textAlign:'left',}}>{symbol.symbol}</td>
+                  <td className={symbol.quote.c > 0 ? 'positive' : 'negative'} style={{width: '50px', textAlign:'right',}}>{symbol.quote.c }</td>
+                  <td className={symbol.quote.d > 0 ? 'positive' : 'negative'} style={{width: '50px', textAlign:'right',}}>{symbol.quote.d }</td>
+                  <td className={symbol.quote.dp > 0 ? 'positive' : 'negative'} style={{width: '50px', textAlign:'right',}}>{symbol.quote.dp}</td>
+                  <td style={{width: '50px', textAlign:'right',}}>{symbol.quote.h}</td>
+                  <td style={{width: '50px', textAlign:'right',}}>{symbol.quote.l}</td>
+                  <td style={{width: '10px', textAlign:'center',}}>
+                    <button className='rembtn' onClick={() => handleRemoveSymbol(symbol.symbol)}>x</button>
                   </td>
                 </tr>
               ))}
