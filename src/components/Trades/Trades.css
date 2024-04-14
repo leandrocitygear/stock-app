@@ -57,6 +57,8 @@
     overflow-y: scroll;
     padding-left: 10px;
     padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: white #262626;
 }
 
 .articleC {
@@ -69,4 +71,10 @@ h4 {
     color: white;
     border-bottom: solid 1px #62CDFF;
     margin-bottom: 5px;
+}
+
+@media (max-width: 1080px) {
+ .Tradesbox {
+    width: 100%;
+ }
 }

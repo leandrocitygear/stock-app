@@ -39,7 +39,7 @@ html, body, #root {
 }
 
 .logo {
-  width: 11.8%;
+  width: 160px;
   color: white;
   padding: 0px 0 0px 10px;
   font-size: 25px;
@@ -53,21 +53,74 @@ html, body, #root {
   height: 93.7%;
 }
 
-.noPhone {
+
+.mobileNav {
   display: none;
 }
 
-@media (max-width: 830px) {
-  .noPhone {
-    background-color:white ;
-    display: block;
-    width: 100%;
-    height: 100%;
-    z-index: 104;
-    font-size: 50px;
-    padding: 100px;
+
+@media (max-width: 1080px) {
+.mobileNav {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #262626;
+  height: 3.7%;
+
+}
+
+.bNav1 {
+  background-color: gray;
+  cursor: pointer;
+  margin-top: 3px;
+   height: 25px;
+    width: 80px;
+    border-width: 0px;
     text-align: center;
-    position: absolute;
-    top:0;
-  }
+    font-size: .83rem;
+    color: #fff;
+}
+
+.bNav2 {
+  background-color: gray;
+  cursor: pointer;
+  margin-top: 3px;
+   height: 25px;
+    width: 80px;
+    border-width: 0px;
+    text-align: center;
+    font-size: .83rem;
+    color: #fff;
+}
+
+.bNav3 {
+  background-color: gray;
+  cursor: pointer;
+  margin-top: 3px;
+   height: 25px;
+    width: 80px;
+    border-width: 0px;
+    text-align: center;
+    font-size: .83rem;
+    color: #fff;
+}
+
+.App-header {
+  background-color: #262626;
+  /* display:flex; */
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.App-main {
+  display: inline-flex;
+  flex-direction: row;
+  width: 100%;
+  height: 90%;
+}
+
+.logo {
+  width: 80px;
+  padding: 0px 10px 0px 10px;
+  font-size: 16px;
+}
 }

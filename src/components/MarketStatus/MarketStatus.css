@@ -18,3 +18,14 @@ p {
     color: red;
     font-size: 15px;
 }
+
+@media (max-width: 1080px) {
+    .Market {
+        color: white;
+        width: 75%;
+        display: inline-flex;
+        padding-top: 7px;   
+        margin-left: 5px;
+    }
+    
+}

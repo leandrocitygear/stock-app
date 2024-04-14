@@ -5,3 +5,8 @@
 }
 
 
+@media (max-width: 1080px) {
+    .Exchanges {
+        display: none;
+    }      
+}
