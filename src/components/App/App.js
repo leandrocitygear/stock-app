@@ -20,6 +20,7 @@ function App() {
         <News />
         <WatchList/>
       </main>
+      <div className='noPhone'>View app on desktop for a better experience</div>
     </div>
   );
 }
