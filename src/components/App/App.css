@@ -106,9 +106,7 @@ html, body, #root {
 
 .App-header {
   background-color: #262626;
-  /* display:flex; */
   width: 100%;
-  overflow-x: scroll;
 }
 
 .App-main {
